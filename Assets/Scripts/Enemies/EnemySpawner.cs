@@ -7,11 +7,12 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private List<WavesConfig> waveConfigs;
     [SerializeField] private float timeBetweenWaves = 0f;
     private WavesConfig currentWave;
+    private bool isLooping = true;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        //Calling the couroutine
         StartCoroutine(SpawnEnemiesWaves());
 
     }
@@ -24,19 +25,35 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnEnemiesWaves()
     {
-        foreach (WavesConfig wave in waveConfigs)
+        //Do all this code while isLooping is true
+        do
         {
-            currentWave = wave;
-
-            //Instantiating the enemies according with the quantative of the enemies saved on the data variable
-            for (int i = 0; i < currentWave.GetEnemyCount(); i++)
+            //Checking out through the waves list all the waves I have there inside
+            //It means I will repeat the for as much as I have of waves into my list
+            foreach (WavesConfig wave in waveConfigs)
             {
-                Instantiate(currentWave.GetEnemyPrefab(i), currentWave.GetStartingWayPoint().position, Quaternion.identity, transform);
+                //Giving the current wave all the elements inside the list
+                currentWave = wave;
 
-                yield return new WaitForSeconds(currentWave.GetRandomSpawnTime());
+                //Instantiating the enemies according with the quantative of the enemies
+                //I will repeat this for as much as I have the enemies on the prefabList. If I have 3, then repeat 3 so
+                //saved on the data variable
+                for (int i = 0; i < currentWave.GetEnemyCount(); i++)
+                {
+                    Instantiate(currentWave.GetEnemyPrefab(i),
+                    currentWave.GetStartingWayPoint().position,
+                    Quaternion.identity,
+                    transform);
+
+                    //Getting the delay between enemies
+                    yield return new WaitForSeconds(currentWave.GetRandomSpawnTime());
+                }
+
+                //Getting the delay between the waves
+                yield return new WaitForSeconds(timeBetweenWaves);
             }
-
-            yield return new WaitForSeconds(timeBetweenWaves);
         }
+        while (isLooping);
+        
     }
 }

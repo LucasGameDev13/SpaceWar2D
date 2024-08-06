@@ -48,13 +48,18 @@ public class WavesConfig : ScriptableObject
     //Getting the enemy's speed
     public float GetMoveSpeed()
     {
+        
         return moveSpeed;
     }
 
+    //Method to return a random value time between the spawn time and the maxium float value
     public float GetRandomSpawnTime()
     {
-        float spawnTime = Random.Range(timeBetweenEnemySpawn - spawnTimeVariance, timeBetweenEnemySpawn + spawnTimeVariance);
+        //This local var saves the random value
+        float spawnTime = Random.Range(timeBetweenEnemySpawn - spawnTimeVariance, 
+                                       timeBetweenEnemySpawn + spawnTimeVariance);
 
+        //This value limits the random value between a maximum value
         return Mathf.Clamp(spawnTime, minimumSpawnTime, float.MaxValue);
     }
 }

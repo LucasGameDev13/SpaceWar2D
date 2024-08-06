@@ -13,6 +13,7 @@ public class PathFinder : MonoBehaviour
     private void Awake()
     {
         //Acessing the enemySpawner Script
+
         enemySpawner = FindObjectOfType<EnemySpawner>();
         
     }
@@ -21,10 +22,12 @@ public class PathFinder : MonoBehaviour
     void Start()
     {
         //Acessing the wavesConfig value through the enemySpawner script
+
         wavesConfig = enemySpawner.GetCurrentWave();
 
         //Save all the wayPoints as soon as my enemy exists on the scene
         //Give to the enemy all the ways it will need to go through
+
         wayPoints = wavesConfig.GetWayPoints();
         transform.position = wayPoints[wayPointsIndex].position;
     }
@@ -40,16 +43,21 @@ public class PathFinder : MonoBehaviour
         //Giving the moviment to the enemy according with the path's index
         if(wayPointsIndex < wayPoints.Count)
         {
+            //Cheking out a target (It is the path's points to be followed)
+            //Getting the enemySpeed
+            //Updating my new position, based on the paths and my speed
+
             Vector3 targetPosition = wayPoints[wayPointsIndex].position;
             float delta = wavesConfig.GetMoveSpeed() * Time.deltaTime;
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, delta);
 
+            //As soon as I achieve the path's target, I go to the next one
             if(transform.position == targetPosition)
             {
                 wayPointsIndex++;
             }
         }
-        else
+        else //If I achieve all the paths, destroy the object
         {
             Destroy(gameObject);
         }
