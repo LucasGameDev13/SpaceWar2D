@@ -247,7 +247,7 @@ MonoBehaviour:
   waveConfigs:
   - {fileID: 11400000, guid: 7730c047c6d45dd41b4dfe805d66c039, type: 2}
   - {fileID: 11400000, guid: c7cd1a231c8e61d4b9f2b0b2d4942521, type: 2}
-  timeBetweenWaves: 0
+  timeBetweenWaves: 1
 --- !u!4 &786332027
 Transform:
   m_ObjectHideFlags: 0
@@ -936,6 +936,10 @@ PrefabInstance:
     - target: {fileID: 4969763092411838196, guid: 38f2d64baa1a51246a8fc09658465e7c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7326647664543656486, guid: 38f2d64baa1a51246a8fc09658465e7c, type: 3}
+      propertyPath: health
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8289434005100539394, guid: 38f2d64baa1a51246a8fc09658465e7c, type: 3}
       propertyPath: m_Name
