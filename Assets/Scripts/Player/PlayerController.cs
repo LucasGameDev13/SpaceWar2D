@@ -17,6 +17,14 @@ public class PlayerController : MonoBehaviour
     private Vector2 minBounds;
     private Vector2 maxBounds;
 
+    [Header("Game Components")]
+    private ShootController shootAcess;
+
+    private void Awake()
+    {
+        shootAcess = GetComponent<ShootController>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,10 +45,22 @@ public class PlayerController : MonoBehaviour
         maxBounds = mainCamera.ViewportToWorldPoint(new Vector2(1, 1));
     }
 
+    //Accessing the commands into the Input System
     void OnMove(InputValue value)
     {
         //Player Inputs
         playerMovimentInput = value.Get<Vector2>();
+    }
+
+    //Accessing the commands into the Input System
+    void OnFire(InputValue value)
+    {
+        //Checking out if there is a shooter script, if yes ... Pass to the variable on the shoot acess
+        //the component that controls if the OnFire commands have been pressed or not
+        if(shootAcess != null)
+        {
+            shootAcess.IsFiring = value.isPressed;
+        }
     }
 
     private void PlayerMoviment()
