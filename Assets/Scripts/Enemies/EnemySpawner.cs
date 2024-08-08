@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour
     private WavesConfig currentWave;
     private bool isLooping = true;
 
+
     // Start is called before the first frame update
     void Start()
     {

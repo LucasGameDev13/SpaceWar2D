@@ -12,6 +12,7 @@ public class WavesConfig : ScriptableObject
     [SerializeField] private float spawnTimeVariance;
     [SerializeField] private float minimumSpawnTime = 0.2f;
 
+
     //Returning the total of enemies at the list
     public int GetEnemyCount()
     {
