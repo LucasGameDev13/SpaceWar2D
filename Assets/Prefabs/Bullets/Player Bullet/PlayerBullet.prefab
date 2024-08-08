@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7881900273455541087}
   - component: {fileID: 9157501338368572241}
-  - component: {fileID: 2528063385393409711}
+  - component: {fileID: 6882836016688698259}
   - component: {fileID: 7501027989232593559}
   m_Layer: 6
   m_Name: PlayerBullet
@@ -70,7 +70,7 @@ CapsuleCollider2D:
   m_Offset: {x: -0.0038016587, y: 0.019999996}
   m_Size: {x: 0.17719015, y: 0.4}
   m_Direction: 0
---- !u!50 &2528063385393409711
+--- !u!50 &6882836016688698259
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0

@@ -43,7 +43,7 @@ public class EnemySpawner : MonoBehaviour
                 {
                     Instantiate(currentWave.GetEnemyPrefab(i),
                     currentWave.GetStartingWayPoint().position,
-                    Quaternion.Euler(0,0,180),
+                    Quaternion.identity,
                     transform);
 
                     //Getting the delay between enemies

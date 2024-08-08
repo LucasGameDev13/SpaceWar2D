@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ShootController : MonoBehaviour
 {
     [Header("General")]
-    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private GameObject[] projectilePrefab;
     [SerializeField] private float projectileSpeed;
     [SerializeField] private float projectileLifeTime;
     [SerializeField] private float delayBetweenBullets;
+    [SerializeField] private int bulletLevel;
 
 
     [Header("AI")]
@@ -52,20 +54,33 @@ public class ShootController : MonoBehaviour
         }
     }
 
+    private void BulletType(int index)
+    {
+        GameObject projectile = Instantiate(projectilePrefab[index], transform.position, Quaternion.identity);
+
+        Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+
+        if (rb != null)
+        {
+            rb.velocity = transform.up * projectileSpeed;
+        }
+
+        Destroy(projectile, projectileLifeTime);
+    }
+
+
     IEnumerator FireContinuously()
     {
         while(true)
-        { 
-            GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-
-            Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
-
-            if(rb != null)
+        {
+            if (useAI)
             {
-                rb.velocity = transform.up * projectileSpeed;
+                BulletType(0);
             }
-
-            Destroy(projectile, projectileLifeTime);
+            else
+            {
+                BulletType(bulletLevel);
+            }
 
             float timeToNextProjectile = Random.Range(delayBetweenBullets - delayVariance, 
                                                       delayBetweenBullets + delayVariance);  
