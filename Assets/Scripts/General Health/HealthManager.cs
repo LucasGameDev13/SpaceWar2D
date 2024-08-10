@@ -6,6 +6,15 @@ public class HealthManager : MonoBehaviour
 {
     [SerializeField] private int health = 50;
     [SerializeField] private Animator caracterAnim;
+    [SerializeField] private ParticleSystem hitEffect;
+    private CameraShake cameraShake;
+    [SerializeField] private bool applyCameraShake;
+
+    private void Awake()
+    {
+        //Accessing the script from the camera
+        cameraShake = Camera.main.GetComponent<CameraShake>();
+    }
 
     //Method to take the health off
     public void TakeDamage(int damage)
@@ -21,7 +30,22 @@ public class HealthManager : MonoBehaviour
                 caracterAnim.SetTrigger("death");
             }
 
+            //Destroying the gameobject after the animation ends
             Destroy(gameObject, 0.5f);
+        }
+    }
+
+    //Method to instantiate the particle system effect
+    private void PlayHitEffect()
+    {
+        //If there is a particle system atteched on the variable
+        if (hitEffect != null)
+        {
+            //Instantiate the particle
+            ParticleSystem instance = Instantiate(hitEffect, transform.position, Quaternion.identity);
+
+            //Destroying the particle system
+            Destroy(instance.gameObject, instance.main.duration + instance.main.startLifetime.constantMax);
         }
     }
 
@@ -34,12 +58,27 @@ public class HealthManager : MonoBehaviour
         //If there is something if this script
         if(damageManager != null )
         {
+          
           //I call the function to get the damage, and subtract from the health
           TakeDamage(damageManager.GetDamage());
+
+          //Playing the shooteffect
+          PlayHitEffect();
+
+          ShakeCamera();
           
           //And I destroy this object that carries the script DamageManager
           damageManager.Hit();
            
+        }
+    }
+
+    //Method to control the camera shake
+    private void ShakeCamera()
+    {
+        if (cameraShake != null && applyCameraShake)
+        {
+            cameraShake.Play();
         }
     }
 }

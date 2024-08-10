@@ -33,13 +33,13 @@ public class EnemySpawner : MonoBehaviour
             //It means I will repeat the for as much as I have of waves into my list
             
             ////Instantiating enemy ramdomly
-            //int randomWavesIndex = Random.Range(0, waveConfigs.Count);
-            //currentWave = waveConfigs[randomWavesIndex];
+            int randomWavesIndex = Random.Range(0, waveConfigs.Count);
+            currentWave = waveConfigs[randomWavesIndex];
 
-            foreach (WavesConfig wave in waveConfigs)
-            {
+            //foreach (WavesConfig wave in waveConfigs)
+            //{
                 //Giving the current wave all the elements inside the list
-                currentWave = wave;
+                //currentWave = wave;
 
                 //Instantiating the enemies according with the quantative of the enemies
                 //I will repeat this for as much as I have the enemies on the prefabList. If I have 3, then repeat 3 so
@@ -57,7 +57,7 @@ public class EnemySpawner : MonoBehaviour
 
                 //Getting the delay between the waves
                 yield return new WaitForSeconds(timeBetweenWaves);
-            }
+            //}
         }
         while (isLooping);
         

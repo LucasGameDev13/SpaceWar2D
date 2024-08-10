@@ -232,6 +232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 30
   caracterAnim: {fileID: 7384857657290171071}
+  hitEffect: {fileID: 4662886433463790316, guid: 28db2a63444481a4abc4a9a39e9f3aee, type: 3}
 --- !u!114 &2185454305892099959
 MonoBehaviour:
   m_ObjectHideFlags: 0
