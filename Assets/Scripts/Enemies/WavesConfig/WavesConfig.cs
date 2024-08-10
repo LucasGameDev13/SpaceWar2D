@@ -46,7 +46,7 @@ public class WavesConfig : ScriptableObject
         return wayPoints;
     }
 
-    //Getting the enemy's speed
+    //Getting the enemy's speed 
     public float GetMoveSpeed()
     {
         
