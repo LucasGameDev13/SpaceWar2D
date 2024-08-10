@@ -29,6 +29,8 @@ public class ShootController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //If useAi is true on the console, it means that the object is the IA
+        //Then isFiring is true to them to keep shooting continuously
         if(useAI)
         {
             isFiring = true;
@@ -41,38 +43,52 @@ public class ShootController : MonoBehaviour
         Fire();
     }
 
+    
     private void Fire()
     {
+        //Check if shooting is activated and no coroutine is currently running
         if (isFiring && fireCoroutine == null)
         {
+            // Start the firing coroutine and store its reference
             fireCoroutine = StartCoroutine(FireContinuously());
         }
-        else if(!isFiring && fireCoroutine != null)
+        // If shooting is deactivated and a coroutine is running
+        else if (!isFiring && fireCoroutine != null)
         {
+            // Stop the firing coroutine
             StopCoroutine(fireCoroutine);
+            // Reset the coroutine reference to null
             fireCoroutine = null;
         }
     }
 
+    //Method to instantiate the bullets 
     private void BulletType(int index)
     {
+        //Instantiating a bullet
         GameObject projectile = Instantiate(projectilePrefab[index], transform.position, Quaternion.identity);
 
+        //Saving on a local variable, the Rig2D from the bullet that will be instantiated
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
 
+        //If there is and rig2D on this object
         if (rb != null)
         {
+            //Accesing its velocity and make the bullet to follow a direction
             rb.velocity = transform.up * projectileSpeed;
         }
 
+        //Destroy the bullet after its lifetime
         Destroy(projectile, projectileLifeTime);
     }
 
 
     IEnumerator FireContinuously()
     {
+        //Looping the bullets while isFiring is true
         while(true)
         {
+            //Giving the bullet to the IA or to the player
             if (useAI)
             {
                 BulletType(0);
@@ -82,9 +98,11 @@ public class ShootController : MonoBehaviour
                 BulletType(bulletLevel);
             }
 
+
+            //Randomizing the bullets delay
             float timeToNextProjectile = Random.Range(delayBetweenBullets - delayVariance, 
                                                       delayBetweenBullets + delayVariance);  
-            
+            //Limiting the bullets delay between a minimun value and maximun one
             timeToNextProjectile = Mathf.Clamp(timeToNextProjectile, minimunDelay, float.MaxValue);
 
             yield return new WaitForSeconds(timeToNextProjectile);           

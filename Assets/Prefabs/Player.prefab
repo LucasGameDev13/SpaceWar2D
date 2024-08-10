@@ -285,7 +285,7 @@ MonoBehaviour:
   projectileSpeed: 10
   projectileLifeTime: 3
   delayBetweenBullets: 0.2
-  bulletLevel: 1
+  bulletLevel: 0
   delayVariance: 0
   minimunDelay: 0
   useAI: 0

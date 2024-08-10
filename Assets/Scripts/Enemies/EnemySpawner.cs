@@ -31,6 +31,11 @@ public class EnemySpawner : MonoBehaviour
         {
             //Checking out through the waves list all the waves I have there inside
             //It means I will repeat the for as much as I have of waves into my list
+            
+            ////Instantiating enemy ramdomly
+            //int randomWavesIndex = Random.Range(0, waveConfigs.Count);
+            //currentWave = waveConfigs[randomWavesIndex];
+
             foreach (WavesConfig wave in waveConfigs)
             {
                 //Giving the current wave all the elements inside the list

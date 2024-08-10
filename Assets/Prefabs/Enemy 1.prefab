@@ -231,6 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 30
+  caracterAnim: {fileID: 7384857657290171071}
 --- !u!114 &2185454305892099959
 MonoBehaviour:
   m_ObjectHideFlags: 0

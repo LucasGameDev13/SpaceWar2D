@@ -5,6 +5,7 @@ using UnityEngine;
 public class HealthManager : MonoBehaviour
 {
     [SerializeField] private int health = 50;
+    [SerializeField] private Animator caracterAnim;
 
     //Method to take the health off
     public void TakeDamage(int damage)
@@ -14,7 +15,13 @@ public class HealthManager : MonoBehaviour
         //As soon as doesn't have health, destroy the gameobject(HealthManager)
         if(health <= 0)
         {
-            Destroy(gameObject);
+            //Calling the player and enemy destroy animation
+            if (caracterAnim != null)
+            {
+                caracterAnim.SetTrigger("death");
+            }
+
+            Destroy(gameObject, 0.5f);
         }
     }
 
