@@ -66,6 +66,7 @@ public class ScoreKeeper : MonoBehaviour
             }
         }
 
+        //Debug
         Debug.Log($"Score:{gameScore} = {scoreNextLevel} = BulletLevel: {shootController.BulletLevel}");
     }
 }
