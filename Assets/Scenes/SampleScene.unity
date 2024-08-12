@@ -533,6 +533,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeDuraction: 0.25
   shakeMagnitude: 0.15
+--- !u!1 &551867880
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 551867881}
+  - component: {fileID: 551867882}
+  m_Layer: 0
+  m_Name: Score Keeper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &551867881
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551867880}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &551867882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551867880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd1e0a77587920d4cb114402addafbd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &780756227
 GameObject:
   m_ObjectHideFlags: 0
@@ -1112,6 +1156,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4044567386477541413, guid: 38f2d64baa1a51246a8fc09658465e7c, type: 3}
+      propertyPath: bulletLevel
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4969763092411838196, guid: 38f2d64baa1a51246a8fc09658465e7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.09
@@ -1167,6 +1215,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 2032454304}
+  - {fileID: 551867881}
   - {fileID: 786332027}
   - {fileID: 1231947407}
   - {fileID: 8000814728325973799}

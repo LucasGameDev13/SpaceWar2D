@@ -27,6 +27,12 @@ public class ShootController : MonoBehaviour
         set { isFiring = value; }
     }
 
+    public int BulletLevel
+    {
+        get { return bulletLevel; }
+        set { bulletLevel = value; }
+    }
+
     private void Awake()
     {
         audioPlayer = FindObjectOfType<AudioPlayer>();
@@ -49,6 +55,11 @@ public class ShootController : MonoBehaviour
         Fire();
     }
 
+    //Variable to return the maximum value into the projectilePrefab
+    public int GetBulletAmount()
+    {
+        return projectilePrefab.Length;   
+    }
     
     private void Fire()
     {

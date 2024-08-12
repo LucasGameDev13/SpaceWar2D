@@ -266,9 +266,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  score: 0
   caracterAnim: {fileID: 3085382499069788069}
   hitEffect: {fileID: 4662886433463790316, guid: 28db2a63444481a4abc4a9a39e9f3aee, type: 3}
   applyCameraShake: 1
+  isPlayer: 1
 --- !u!114 &4044567386477541413
 MonoBehaviour:
   m_ObjectHideFlags: 0

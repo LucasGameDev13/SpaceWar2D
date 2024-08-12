@@ -5,11 +5,14 @@ using UnityEngine;
 public class HealthManager : MonoBehaviour
 {
     [SerializeField] private int health = 50;
+    [SerializeField] private int score;
     [SerializeField] private Animator caracterAnim;
     [SerializeField] private ParticleSystem hitEffect;
-    private CameraShake cameraShake;
     [SerializeField] private bool applyCameraShake;
+    [SerializeField] private bool isPlayer;
+    private CameraShake cameraShake;
     private AudioPlayer audioPlayer;
+    private ScoreKeeper scoreKeeper;
 
     private void Awake()
     {
@@ -17,6 +20,8 @@ public class HealthManager : MonoBehaviour
         cameraShake = Camera.main.GetComponent<CameraShake>();
 
         audioPlayer = FindObjectOfType<AudioPlayer>();
+
+        scoreKeeper = FindObjectOfType<ScoreKeeper>();
     }
 
     //Method to take the health off
@@ -36,8 +41,20 @@ public class HealthManager : MonoBehaviour
             }
 
             //Destroying the gameobject after the animation ends
-            Destroy(gameObject, 0.5f);
+            Die();
         }
+    }
+
+    //Method to destroy the gameObject and checkout who is and who isn't the player
+    //Who isn't the player, trigger the method to score the game
+    private void Die()
+    {
+        if (!isPlayer)
+        {
+           scoreKeeper.IncreaseScore(score); 
+        }
+
+        Destroy(gameObject, 0.5f);
     }
 
     //Method to instantiate the particle system effect
@@ -70,12 +87,19 @@ public class HealthManager : MonoBehaviour
           //Playing the shooteffect
           PlayHitEffect();
 
+          //Calling the method shake camera
           ShakeCamera();
           
           //And I destroy this object that carries the script DamageManager
           damageManager.Hit();
            
         }
+    }
+
+    //Method to get get the total health
+    public int GetHealth()
+    {
+        return health;
     }
 
     //Method to control the camera shake
