@@ -11,6 +11,7 @@ public class ShootController : MonoBehaviour
     [SerializeField] private float projectileLifeTime;
     [SerializeField] private float delayBetweenBullets;
     [SerializeField] private int bulletLevel;
+    private AudioPlayer audioPlayer;
 
 
     [Header("AI")]
@@ -24,6 +25,11 @@ public class ShootController : MonoBehaviour
     {
         get { return isFiring; }
         set { isFiring = value; }
+    }
+
+    private void Awake()
+    {
+        audioPlayer = FindObjectOfType<AudioPlayer>();
     }
 
     // Start is called before the first frame update
@@ -92,10 +98,12 @@ public class ShootController : MonoBehaviour
             if (useAI)
             {
                 BulletType(0);
+                audioPlayer.PlayEnemyShootingClip();
             }
             else
             {
                 BulletType(bulletLevel);
+                audioPlayer.PlayShootingClip();
             }
 
 

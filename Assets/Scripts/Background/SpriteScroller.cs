@@ -35,7 +35,7 @@ public class SpriteScroller : MonoBehaviour
     //Method to be used as the parallax effect
     private void OnMove()
     {
-        //
+        
         offset += incrementOffset;
         currentMaterial.SetTextureOffset("_MainTex", new Vector2(posX * offset, offset * moveSpeed));
     }

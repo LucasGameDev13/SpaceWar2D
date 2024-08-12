@@ -9,17 +9,22 @@ public class HealthManager : MonoBehaviour
     [SerializeField] private ParticleSystem hitEffect;
     private CameraShake cameraShake;
     [SerializeField] private bool applyCameraShake;
+    private AudioPlayer audioPlayer;
 
     private void Awake()
     {
         //Accessing the script from the camera
         cameraShake = Camera.main.GetComponent<CameraShake>();
+
+        audioPlayer = FindObjectOfType<AudioPlayer>();
     }
 
     //Method to take the health off
     public void TakeDamage(int damage)
     {
         health -= damage;
+
+        audioPlayer.PlayDamageClip();
 
         //As soon as doesn't have health, destroy the gameobject(HealthManager)
         if(health <= 0)
