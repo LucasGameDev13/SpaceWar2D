@@ -11,7 +11,13 @@ public class ScoreKeeper : MonoBehaviour
     //Variables to the bulletLevel
     private int scoreLevelBullet;
     private int maxLevel;
-    private int scoreNextLevel;
+    [SerializeField] private int scoreNextLevel;
+
+    public int MaxLevel
+    {
+        get { return maxLevel; }
+        set { maxLevel = value; }
+    }
 
     private void Awake()
     {
@@ -21,7 +27,7 @@ public class ScoreKeeper : MonoBehaviour
     private void Start()
     {
         //Setting up the score to the next level and the level max limit
-        scoreNextLevel = 1000;
+        //scoreNextLevel = 100;
         maxLevel = shootController.GetBulletAmount() - 1;
     }
 
@@ -33,6 +39,11 @@ public class ScoreKeeper : MonoBehaviour
     public int GetCurrentScore()
     {
         return gameScore;
+    }
+
+    public int GetCurrentScoreNextLevel()
+    {
+        return scoreNextLevel;
     }
 
     //Increasing the variable gameScore
@@ -67,6 +78,6 @@ public class ScoreKeeper : MonoBehaviour
         }
 
         //Debug
-        Debug.Log($"Score:{gameScore} = {scoreNextLevel} = BulletLevel: {shootController.BulletLevel}");
+        //Debug.Log($"Score:{gameScore} = {scoreNextLevel} = BulletLevel: {shootController.BulletLevel}");
     }
 }
