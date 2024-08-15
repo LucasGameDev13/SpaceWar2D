@@ -13,6 +13,8 @@ public class HealthManager : MonoBehaviour
     private CameraShake cameraShake;
     private AudioPlayer audioPlayer;
     private ScoreKeeper scoreKeeper;
+    private LevelManager levelManager;
+    private EnemySpawner enemySpawner;
 
     private void Awake()
     {
@@ -22,6 +24,10 @@ public class HealthManager : MonoBehaviour
         audioPlayer = FindObjectOfType<AudioPlayer>();
 
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
+
+        levelManager = FindObjectOfType<LevelManager>();
+
+        enemySpawner = FindObjectOfType<EnemySpawner>();
     }
 
     //Method to take the health off
@@ -52,6 +58,11 @@ public class HealthManager : MonoBehaviour
         if (!isPlayer)
         {
            scoreKeeper.IncreaseScore(score); 
+        }
+        else
+        {
+            //levelManager.LoadGameOver();
+            enemySpawner.IsLooping = false;
         }
 
         Destroy(gameObject, 0.5f);

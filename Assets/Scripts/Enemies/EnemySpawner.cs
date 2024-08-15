@@ -10,6 +10,12 @@ public class EnemySpawner : MonoBehaviour
     private bool isLooping = true;
 
 
+    public bool IsLooping
+    {
+        get { return isLooping; }
+        set { isLooping = value; }
+    }
+
     // Start is called before the first frame update
     void Start()
     {

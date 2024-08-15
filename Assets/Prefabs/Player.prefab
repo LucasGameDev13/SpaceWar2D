@@ -248,7 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3831014ab6198074183e495238d4fbca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 3
+  playerSpeed: 3.5
   paddingLeft: 0.5
   paddingRight: 0.5
   paddingTop: 0.5
@@ -290,7 +290,7 @@ MonoBehaviour:
   projectileSpeed: 10
   projectileLifeTime: 3
   delayBetweenBullets: 0.2
-  bulletLevel: 2
+  bulletLevel: 0
   delayVariance: 0
   minimunDelay: 0
   useAI: 0

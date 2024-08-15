@@ -7,6 +7,7 @@ public class ScoreKeeper : MonoBehaviour
 {
     private ShootController shootController;
     private int gameScore;
+    private int finalScore;
 
     //Variables to the bulletLevel
     private int scoreLevelBullet;
@@ -31,16 +32,25 @@ public class ScoreKeeper : MonoBehaviour
         maxLevel = shootController.GetBulletAmount() - 1;
     }
 
+    //Updating all the time the final score
     private void Update()
     {
-        
+        finalScore = gameScore;
     }
 
+    //Returning the current score
     public int GetCurrentScore()
     {
         return gameScore;
     }
 
+    //Returning the score to update the final score
+    public int GetFinalScore()
+    {
+        return finalScore;  
+    }
+
+    //Returning the score to control the bullet level
     public int GetCurrentScoreNextLevel()
     {
         return scoreNextLevel;
@@ -50,15 +60,10 @@ public class ScoreKeeper : MonoBehaviour
     public void IncreaseScore(int score)
     {
         gameScore += score;
+        
         Mathf.Clamp(gameScore, 0, int.MaxValue);
 
         IncreaseLevelBullet();
-    }
-
-    //Reseting to zero the score
-    public void ResetScore()
-    {
-        gameScore = 0;
     }
 
     //Method to increase the bullets level
